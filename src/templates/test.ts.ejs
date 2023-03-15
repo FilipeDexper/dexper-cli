@@ -1,0 +1,21 @@
+/**
+ * Tests for <%= props.name%>
+ *
+ * @group components/atoms/<%= props.name%>
+ */
+
+import { fireEvent, render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import <%= props.name%> from './<%= props.name%>';
+
+describe('<%= props.name%>', () => {
+  it('renders elements correctly', () => {
+    render(<<%= props.name%> />);
+
+    const <%= props.lowercaseName%> = screen.getByTestId('<%= props.name%>');
+    expect(<%= props.lowercaseName%>).toBeTruthy();
+    expect(<%= props.lowercaseName%>).toBeInTheDocument();
+    expect(<%= props.lowercaseName%>).toBeVisible();
+    fireEvent.click(<%= props.lowercaseName%>);
+  });
+});

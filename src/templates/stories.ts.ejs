@@ -1,0 +1,15 @@
+import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import <%= props.name%> from './<%= props.name%>';
+import { Flex } from '@chakra-ui/react';
+
+export default {
+  title: '<%= props.path%>',
+  component: <%= props.name%>,
+} as ComponentMeta<typeof <%= props.name%>>;
+
+export const All: ComponentStory<typeof <%= props.name%>> = () => (
+  <Flex bg="brand.400" h="100vh" justify="center">
+    <<%= props.name%> />
+  </Flex>
+);
