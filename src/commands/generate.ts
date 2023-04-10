@@ -8,6 +8,7 @@ module.exports = {
       parameters,
       template: { generate },
       print: { info },
+      patching: { patch },
     } = toolbox
 
     const path = parameters.first
@@ -39,6 +40,31 @@ module.exports = {
       props: { name, path },
     })
 
-    info(`Generated file at models/${name}-model.ts`)
+    await generate({
+      template: 'styles.ts.ejs',
+      target: `.storybook/theme/components/${path}Styles.ts`,
+      props: { name },
+    })
+
+    await patch('.storybook/theme/components/index.ts', {
+      insert: `import ${name} from './${path}Styles' 
+      
+`,
+      before: 'export {',
+    })
+
+    await patch('.storybook/theme/components/index.ts', {
+      insert: `${name},`,
+      before: '};',
+    })
+
+    await patch('.storybook/theme/components/index.ts', {
+      insert: `
+  ${name},`,
+      after: 'export const AllComponents = {',
+      force: true,
+    })
+
+    info(`Generated file at components/${path}`)
   },
 }

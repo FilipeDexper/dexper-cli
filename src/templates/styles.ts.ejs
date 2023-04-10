@@ -1,0 +1,14 @@
+import { BaseStyleType, ComponentStyleConfig } from 'storybook/types';
+
+export type <%= props.name%>BaseStyle = {
+  inner: BaseStyleType;
+};
+
+const <%= props.name%>Styles: ComponentStyleConfig = {
+  baseStyle: {
+    inner: {},
+  },
+  parts: ['inner'],
+};
+
+export default <%= props.name%>Styles;

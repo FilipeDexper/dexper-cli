@@ -1,7 +1,10 @@
-import { Box } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 
 const <%= props.name%> = () => {
-  return <Box display="flex"></Box>;
+  //const styles = useMultiStyleConfig('<%= props.name%>') as <%= props.name%>BaseStyle;
+  //const styles = useStyleConfig('<%= props.name%>') as <%= props.name%>BaseStyle;
+
+  return <Flex data-testid="<%= props.name%>"></Flex>;
 };
 
 <%= props.name%>.displayName = '<%= props.name%>';
